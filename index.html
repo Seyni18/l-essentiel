@@ -1,0 +1,500 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>L'essentiel</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400&family=Jost:wght@300;400;500&display=swap">
+<style>
+/* Layout: boutique en une page. Motif récurrent : la voûte (arche) comme cadre produit. Navigation collante, 4 rubriques, panier latéral. */
+:root{
+  --bg:#F7F2F4; --surface:#FFFFFF; --ink:#2B1B30; --muted:#75667A; --line:#E6DAE0;
+  --accent:#7C3A5E; --accent-ink:#FFFFFF; --gold:#B98B4E; --blush:#EBD3DC;
+  --display:'Bodoni Moda','Didot','Bodoni 72',Georgia,serif;
+  --body:'Jost','Helvetica Neue',Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#181019; --surface:#231929; --ink:#F3E9EE; --muted:#A998AF; --line:#3A2C41;
+    --accent:#D79AB9; --accent-ink:#2B1B30; --gold:#D3A767; --blush:#3A2742; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#181019; --surface:#231929; --ink:#F3E9EE; --muted:#A998AF; --line:#3A2C41;
+  --accent:#D79AB9; --accent-ink:#2B1B30; --gold:#D3A767; --blush:#3A2742; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--ink); font-family:var(--body); font-weight:400; font-size:15px; line-height:1.55;
+  padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px));
+  padding-block:0 0;
+}
+body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top, 0px); z-index:30; background:var(--bg)}
+a{color:inherit}
+button{font:inherit; color:inherit; cursor:pointer}
+:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+.wrap{max-width:1180px; margin:0 auto}
+
+/* Header */
+.top{position:sticky; top:env(safe-area-inset-top, 0px); z-index:20; background:var(--bg); border-bottom:1px solid var(--line);
+  margin-inline:calc(-1 * max(16px, env(safe-area-inset-left, 0px))) calc(-1 * max(16px, env(safe-area-inset-right, 0px)));
+  padding-inline:max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px))}
+.top .wrap{display:flex; align-items:center; justify-content:space-between; gap:16px; padding-block:12px; flex-wrap:wrap}
+.logo{font-family:var(--display); font-size:1.7rem; font-weight:500; letter-spacing:.01em; text-decoration:none; line-height:1}
+.logo i{color:var(--accent)}
+.nav{display:flex; gap:6px; overflow-x:auto; order:3; width:100%; scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{white-space:nowrap; text-decoration:none; font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; padding:8px 14px; border-radius:99px; color:var(--muted)}
+.nav a:hover{color:var(--ink); background:var(--blush)}
+.cartbtn{display:flex; align-items:center; gap:10px; border:1px solid var(--ink); background:transparent; border-radius:99px; padding:8px 16px; font-size:.82rem; letter-spacing:.1em; text-transform:uppercase}
+.cartbtn:hover{background:var(--ink); color:var(--bg)}
+.cartbtn b{display:inline-grid; place-items:center; min-width:22px; height:22px; border-radius:99px; background:var(--accent); color:var(--accent-ink); font-size:.75rem; font-weight:500; padding:0 6px}
+@media (min-width:860px){
+  .nav{order:0; width:auto; justify-content:center; flex:1}
+  .top .wrap{flex-wrap:nowrap}
+}
+
+/* Hero */
+.hero{display:grid; grid-template-columns:1fr; gap:36px; padding-block:40px 28px; align-items:center}
+@media (min-width:900px){.hero{grid-template-columns:1.05fr 1fr; gap:56px; padding-block:64px 40px}}
+.eyebrow{font-size:.74rem; letter-spacing:.24em; text-transform:uppercase; color:var(--muted); margin:0 0 18px}
+.hero h1{font-family:var(--display); font-weight:400; font-size:clamp(3.4rem, 13vw, 7.4rem); line-height:.95; margin:0 0 22px; letter-spacing:-.02em; text-wrap:balance}
+.hero h1 em{font-style:italic; color:var(--accent)}
+.hero p.lead{max-width:36ch; font-size:1.08rem; color:var(--muted); margin:0 0 30px; font-weight:300}
+.cta{display:inline-flex; align-items:center; gap:12px; background:var(--ink); color:var(--bg); text-decoration:none; padding:15px 28px; border-radius:99px; font-size:.82rem; letter-spacing:.16em; text-transform:uppercase}
+.cta:hover{background:var(--accent); color:var(--accent-ink)}
+.arches{display:grid; grid-template-columns:1fr 1.12fr 1fr; gap:10px; align-items:end}
+.arches .arch:nth-child(1){margin-bottom:0; transform:translateY(-18px)}
+.arches .arch:nth-child(3){transform:translateY(-34px)}
+.arch{display:block; width:100%; aspect-ratio:5/6; border-radius:999px 999px 10px 10px; overflow:hidden}
+.arch{position:relative; background:var(--blush)}
+.arch svg{display:block; width:100%; height:100%}
+.arch .ph-bg{position:absolute; left:-12%; top:-12%; width:124%; height:124%; object-fit:cover; filter:blur(22px) saturate(1.1)}
+.arch .ph{position:absolute; inset:0; width:100%; height:100%; object-fit:contain; padding:7% 4% 3%}
+.arch .ph.full{padding:0}
+@media (prefers-reduced-motion:no-preference){
+  .arches .arch{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+  .arches .arch:nth-child(2){animation-delay:.1s}
+  .arches .arch:nth-child(3){animation-delay:.2s}
+  @keyframes rise{from{translate:0 22px}to{translate:0 0}}
+}
+
+/* Promesses */
+.promises{display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px 28px; border-block:1px solid var(--line); padding-block:16px; font-size:.78rem; letter-spacing:.16em; text-transform:uppercase; color:var(--muted)}
+.promises span::before{content:"\25C6"; color:var(--gold); margin-right:10px; font-size:.6rem; vertical-align:2px}
+
+/* Rubriques */
+.cats{display:grid; grid-template-columns:repeat(2,1fr); gap:14px; padding-block:44px 8px}
+@media (min-width:760px){.cats{grid-template-columns:repeat(4,1fr); gap:20px}}
+.cat{text-decoration:none; display:block; text-align:center}
+.cat .arch{margin-bottom:12px; transition:transform .35s}
+.cat:hover .arch{transform:translateY(-4px)}
+.cat h3{font-family:var(--display); font-weight:500; font-size:1.3rem; margin:0}
+.cat span{font-size:.74rem; letter-spacing:.16em; text-transform:uppercase; color:var(--muted)}
+
+/* Sections */
+.sec{padding-block:64px 8px; scroll-margin-top:110px}
+.sec-head{display:flex; flex-wrap:wrap; align-items:end; justify-content:space-between; gap:12px 24px; margin-bottom:22px}
+.sec-head h2{font-family:var(--display); font-weight:400; font-size:clamp(2.4rem,7vw,4rem); line-height:1; margin:0; letter-spacing:-.015em}
+.sec-head h2 em{color:var(--accent)}
+.sec-head p{margin:8px 0 0; color:var(--muted); max-width:44ch; font-weight:300}
+.chips{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:26px}
+.chip{border:1px solid var(--line); background:transparent; border-radius:99px; padding:7px 16px; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted)}
+.chip:hover{border-color:var(--ink); color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink); color:var(--bg); border-color:var(--ink)}
+.grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(165px,1fr)); gap:30px 16px}
+@media (min-width:900px){.grid{grid-template-columns:repeat(auto-fill, minmax(220px,1fr)); gap:42px 22px}}
+.card{display:flex; flex-direction:column; min-width:0}
+.card .arch{position:relative; transition:box-shadow .35s}
+.card:hover .arch{box-shadow:0 18px 30px -18px rgba(43,27,48,.45)}
+.badge{position:absolute; left:50%; bottom:12px; translate:-50% 0; background:var(--surface); color:var(--ink); font-size:.66rem; letter-spacing:.16em; text-transform:uppercase; padding:4px 10px; border-radius:99px; white-space:nowrap}
+.card h3{font-family:var(--display); font-weight:500; font-size:1.08rem; line-height:1.25; margin:14px 0 2px; text-wrap:balance}
+.card .desc{font-size:.84rem; color:var(--muted); margin:0 0 10px; font-weight:300}
+.card .row{margin-top:auto; display:flex; align-items:center; justify-content:space-between; gap:8px; flex-wrap:wrap}
+.price{font-variant-numeric:tabular-nums; font-weight:500; font-size:.95rem}
+.price small{font-weight:400; color:var(--muted); font-size:.72rem; letter-spacing:.06em}
+.add{border:1px solid var(--ink); background:transparent; border-radius:99px; padding:6px 14px; font-size:.74rem; letter-spacing:.12em; text-transform:uppercase}
+.add:hover{background:var(--ink); color:var(--bg)}
+
+/* Bandeau */
+.band{margin-block:72px 0; background:var(--ink); color:var(--bg); border-radius:28px; padding:44px clamp(20px,5vw,56px); display:grid; gap:12px; text-align:center}
+.band h2{font-family:var(--display); font-weight:400; font-style:italic; font-size:clamp(1.8rem,5vw,3rem); margin:0; line-height:1.15; text-wrap:balance}
+.band p{margin:0 auto; max-width:46ch; opacity:.78; font-weight:300}
+
+/* Footer */
+footer{padding-block:48px 56px; margin-top:8px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:18px; color:var(--muted); font-size:.84rem}
+footer .logo{color:var(--ink)}
+
+/* Panier */
+.veil{position:fixed; inset:0; background:rgba(20,10,24,.5); z-index:40; opacity:0; pointer-events:none; transition:opacity .3s}
+.veil.on{opacity:1; pointer-events:auto}
+.drawer{position:fixed; top:0; right:0; bottom:0; width:min(440px,100%); background:var(--surface); z-index:50; transform:translateX(102%); transition:transform .4s cubic-bezier(.2,.7,.2,1); display:flex; flex-direction:column;
+  padding:env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) 0; border-left:1px solid var(--line)}
+.drawer.on{transform:none}
+.dh{display:flex; justify-content:space-between; align-items:center; padding:18px 22px; border-bottom:1px solid var(--line)}
+.dh h2{font-family:var(--display); font-weight:500; font-size:1.5rem; margin:0}
+.x{border:0; background:transparent; font-size:1.6rem; line-height:1; padding:4px 8px}
+.items{flex:1; overflow-y:auto; padding:6px 22px; min-height:0}
+.empty{color:var(--muted); text-align:center; padding:48px 12px; font-weight:300}
+.empty b{display:block; font-family:var(--display); font-weight:400; font-size:1.4rem; color:var(--ink); margin-bottom:6px}
+.it{display:grid; grid-template-columns:64px 1fr auto; gap:14px; align-items:center; padding:14px 0; border-bottom:1px solid var(--line)}
+.it .arch{width:64px}
+.it h4{margin:0; font-family:var(--display); font-weight:500; font-size:.98rem; line-height:1.25}
+.it .p{font-size:.84rem; color:var(--muted); font-variant-numeric:tabular-nums}
+.qty{display:flex; align-items:center; gap:2px; margin-top:6px}
+.qty button{width:26px; height:26px; border-radius:99px; border:1px solid var(--line); background:transparent; line-height:1}
+.qty button:hover{border-color:var(--ink)}
+.qty span{min-width:24px; text-align:center; font-variant-numeric:tabular-nums}
+.rm{border:0; background:transparent; color:var(--muted); font-size:.74rem; letter-spacing:.08em; text-decoration:underline; padding:4px}
+.df{border-top:1px solid var(--line); padding:16px 22px 20px; display:grid; gap:10px}
+.tot{display:flex; justify-content:space-between; font-family:var(--display); font-size:1.3rem}
+.tot span:last-child{font-variant-numeric:tabular-nums}
+.df label{font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); display:grid; gap:4px}
+.df input,.df textarea{font:inherit; color:var(--ink); background:var(--bg); border:1px solid var(--line); border-radius:12px; padding:10px 12px; width:100%}
+.df input:focus,.df textarea:focus{outline:2px solid var(--accent); outline-offset:1px}
+.send{border:0; background:var(--accent); color:var(--accent-ink); border-radius:99px; padding:14px; font-size:.82rem; letter-spacing:.16em; text-transform:uppercase}
+.send:hover{filter:brightness(1.08)}
+.send:disabled{opacity:.45; cursor:not-allowed}
+.note{font-size:.8rem; color:var(--muted); margin:0}
+.note.ok{color:var(--accent)}
+.toast{position:fixed; left:50%; bottom:calc(22px + env(safe-area-inset-bottom, 0px)); translate:-50% 20px; background:var(--ink); color:var(--bg); padding:11px 20px; border-radius:99px; font-size:.84rem; z-index:60; opacity:0; pointer-events:none; transition:.3s}
+.toast.on{opacity:1; translate:-50% 0}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#haut" id="logo">L<i>'</i>essentiel</a>
+    <nav class="nav" aria-label="Rubriques">
+      <a href="#skincare" data-go="skincare">Skincare</a>
+      <a href="#body" data-go="body">Body</a>
+      <a href="#jewelry" data-go="jewelry">Jewelry</a>
+      <a href="#accessoires" data-go="accessoires">Accessoires</a>
+    </nav>
+    <button class="cartbtn" id="openCart" aria-label="Ouvrir le panier">Panier <b id="count">0</b></button>
+  </div>
+</header>
+
+<main class="wrap" id="haut">
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Soins · Parfums · Bijoux · Accessoires</p>
+      <h1>L<em>'</em>essen&shy;tiel</h1>
+      <p class="lead">Des soins, des parfums, des bijoux et des accessoires choisis pour elle. Peu de pièces, toutes justes.</p>
+      <a class="cta" href="#skincare" data-go="skincare">Découvrir la boutique <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="arches" id="heroArches" aria-hidden="true"></div>
+  </section>
+
+  <div class="promises">
+    <span>Livraison à Dakar</span>
+    <span>Emballage cadeau</span>
+    <span>Commande par message</span>
+    <span>Prix en FCFA</span>
+  </div>
+
+  <section class="cats" id="cats" aria-label="Rubriques"></section>
+
+  <section class="sec" id="skincare"></section>
+  <section class="sec" id="body"></section>
+  <section class="sec" id="jewelry"></section>
+  <section class="sec" id="accessoires"></section>
+
+  <section class="band">
+    <h2>Prenez soin de vous, puis habillez-vous de lumière.</h2>
+    <p>Chaque pièce de la boutique est choisie pour durer dans votre routine, votre bijoutier et votre sac.</p>
+  </section>
+
+  <footer>
+    <a class="logo" href="#haut" data-go="top">L<i>'</i>essentiel</a>
+    <span>Boutique en ligne pour elle · Dakar, Sénégal</span>
+    <span>© 2026 L'essentiel</span>
+  </footer>
+</main>
+
+<div class="veil" id="veil"></div>
+<aside class="drawer" id="drawer" aria-label="Panier" aria-hidden="true">
+  <div class="dh"><h2>Mon panier</h2><button class="x" id="closeCart" aria-label="Fermer le panier">×</button></div>
+  <div class="items" id="items"></div>
+  <div class="df" id="df">
+    <div class="tot"><span>Total</span><span id="total">0 FCFA</span></div>
+    <label for="fName">Prénom et nom<input id="fName" autocomplete="name" placeholder="Awa Diop"></label>
+    <label for="fTel">Téléphone<input id="fTel" inputmode="tel" autocomplete="tel" placeholder="77 000 00 00"></label>
+    <label for="fAddr">Quartier et indications de livraison<input id="fAddr" autocomplete="street-address" placeholder="Mermoz, près de la pharmacie"></label>
+    <button class="send" id="copyOrder" disabled>Copier ma commande</button>
+    <label for="orderText" id="orderLbl" hidden>Votre commande<textarea id="orderText" rows="6" readonly></textarea></label>
+    <p class="note" id="note">Copiez la commande, puis envoyez-la nous en message pour confirmer le paiement et la livraison.</p>
+  </div>
+</aside>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function(){
+  var seq = 0;
+  /* ---------- Illustrations ---------- */
+  function defs(id){
+    return '<defs>'
+    + '<linearGradient id="'+id+'g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F3E2B6"/><stop offset=".5" stop-color="#C99C58"/><stop offset="1" stop-color="#8C6734"/></linearGradient>'
+    + '<linearGradient id="'+id+'h" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".5"/><stop offset=".38" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".14"/></linearGradient>'
+    + '<radialGradient id="'+id+'p" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#EADCE2"/><stop offset="1" stop-color="#BFA9B4"/></radialGradient>'
+    + '<linearGradient id="'+id+'l" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4A3640"/><stop offset="1" stop-color="#1E1320"/></linearGradient>'
+    + '</defs>';
+  }
+  var INK='#2B1B30';
+  function label(x,y,w,h,txt){
+    return '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="3" fill="#FBF6F3"/>'
+    + '<text x="'+(x+w/2)+'" y="'+(y+h/2+3)+'" text-anchor="middle" font-family="Bodoni Moda,Didot,serif" font-size="9" fill="'+INK+'">'+(txt||"L’essentiel")+'</text>';
+  }
+  var ART = {
+    serum:function(i,c,o){ o=o||{};
+      return '<rect x="68" y="100" width="64" height="110" rx="14" fill="'+c+'"/><rect x="68" y="100" width="64" height="110" rx="14" fill="url(#'+i+'h)"/>'
+      + label(76,140,48,40)
+      + '<rect x="88" y="84" width="24" height="18" rx="3" fill="url(#'+i+'g)"/><rect x="90" y="46" width="20" height="42" rx="10" fill="'+INK+'"/><rect x="90" y="46" width="20" height="42" rx="10" fill="url(#'+i+'h)"/>'
+      + (o.sparkle?'<g fill="url(#'+i+'g)"><circle cx="58" cy="96" r="2.4"/><circle cx="146" cy="130" r="3"/><circle cx="52" cy="150" r="1.8"/><circle cx="150" cy="86" r="1.8"/></g>':'');},
+    jar:function(i,c){
+      return '<rect x="44" y="128" width="112" height="76" rx="12" fill="'+c+'"/><rect x="44" y="128" width="112" height="76" rx="12" fill="url(#'+i+'h)"/>'
+      + '<rect x="40" y="98" width="120" height="36" rx="8" fill="url(#'+i+'g)"/><g stroke="#8C6734" stroke-opacity=".35"><path d="M56 104v24M68 104v24M80 104v24M92 104v24M104 104v24M116 104v24M128 104v24M140 104v24"/></g>'
+      + label(66,150,68,34);},
+    tube:function(i,c){
+      return '<path d="M72 196 L76 72 Q100 62 124 72 L128 196 Z" fill="'+c+'"/><path d="M72 196 L76 72 Q100 62 124 72 L128 196 Z" fill="url(#'+i+'h)"/>'
+      + '<rect x="74" y="56" width="52" height="16" rx="3" fill="url(#'+i+'g)"/><g stroke="#8C6734" stroke-opacity=".4"><path d="M82 58v12M90 58v12M98 58v12M106 58v12M114 58v12"/></g>'
+      + '<rect x="75" y="196" width="50" height="16" rx="5" fill="url(#'+i+'g)"/>' + label(80,110,40,44);},
+    pump:function(i,c){
+      return '<rect x="58" y="92" width="84" height="118" rx="18" fill="'+c+'"/><rect x="58" y="92" width="84" height="118" rx="18" fill="url(#'+i+'h)"/>'
+      + label(70,136,60,44,"L’essentiel")
+      + '<rect x="91" y="76" width="18" height="18" fill="url(#'+i+'g)"/><rect x="80" y="58" width="42" height="16" rx="6" fill="'+INK+'"/><rect x="112" y="62" width="26" height="7" rx="3" fill="'+INK+'"/>';},
+    perfume:function(i,c){
+      return '<rect x="56" y="108" width="88" height="102" rx="10" fill="'+c+'"/><rect x="66" y="118" width="68" height="82" rx="6" fill="#fff" opacity=".18"/><rect x="56" y="108" width="88" height="102" rx="10" fill="url(#'+i+'h)"/>'
+      + label(74,150,52,34)
+      + '<rect x="91" y="94" width="18" height="16" fill="url(#'+i+'g)"/><rect x="80" y="62" width="40" height="34" rx="5" fill="url(#'+i+'g)"/><rect x="80" y="62" width="40" height="34" rx="5" fill="url(#'+i+'h)"/>';},
+    perfumeRound:function(i,c){
+      return '<circle cx="100" cy="158" r="52" fill="'+c+'"/><circle cx="100" cy="158" r="52" fill="url(#'+i+'h)"/><circle cx="100" cy="158" r="40" fill="#fff" opacity=".14"/>'
+      + label(76,148,48,30)
+      + '<rect x="92" y="92" width="16" height="14" fill="url(#'+i+'g)"/><circle cx="100" cy="76" r="20" fill="url(#'+i+'g)"/><circle cx="100" cy="76" r="20" fill="url(#'+i+'h)"/>';},
+    mist:function(i,c){
+      return '<rect x="70" y="96" width="60" height="114" rx="12" fill="'+c+'"/><rect x="70" y="96" width="60" height="114" rx="12" fill="url(#'+i+'h)"/>'
+      + label(78,140,44,40)
+      + '<rect x="84" y="78" width="32" height="20" rx="3" fill="url(#'+i+'g)"/><rect x="88" y="56" width="24" height="24" rx="6" fill="'+INK+'"/><rect x="108" y="62" width="14" height="6" rx="3" fill="'+INK+'"/>';},
+    ring:function(i){
+      return '<circle cx="100" cy="150" r="42" fill="none" stroke="url(#'+i+'g)" stroke-width="11"/>'
+      + '<path d="M86 106 L100 114 L114 106" fill="none" stroke="url(#'+i+'g)" stroke-width="5" stroke-linecap="round"/>'
+      + '<polygon points="100,66 120,84 100,110 80,84" fill="#F8F1F6"/><path d="M80 84H120M100 66L91 84L100 110L109 84Z" fill="none" stroke="#CDBED3" stroke-width="1"/>'
+      + '<g fill="#fff"><path d="M150 72l2 7 7 2-7 2-2 7-2-7-7-2 7-2z"/><path d="M46 112l1.5 5 5 1.5-5 1.5-1.5 5-1.5-5-5-1.5 5-1.5z"/></g>';},
+    necklace:function(i){
+      return '<path d="M32 62 Q100 224 168 62" fill="none" stroke="url(#'+i+'g)" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="6 2.5"/>'
+      + '<path d="M100 141 v-1" stroke="url(#'+i+'g)" stroke-width="3"/><circle cx="100" cy="156" r="13" fill="url(#'+i+'p)"/><path d="M95 143 h10" stroke="url(#'+i+'g)" stroke-width="4" stroke-linecap="round"/>'
+      + '<g fill="#fff"><path d="M148 120l1.5 5 5 1.5-5 1.5-1.5 5-1.5-5-5-1.5 5-1.5z"/></g>';},
+    hoops:function(i){
+      return '<g fill="none" stroke="url(#'+i+'g)" stroke-width="7"><circle cx="68" cy="140" r="32"/><circle cx="132" cy="140" r="32"/></g>'
+      + '<g fill="none" stroke="url(#'+i+'g)" stroke-width="3" stroke-linecap="round"><path d="M68 108 v-12 a6 6 0 0 1 12 0"/><path d="M132 108 v-12 a6 6 0 0 0 -12 0"/></g>';},
+    drops:function(i){
+      return '<g fill="url(#'+i+'g)"><circle cx="72" cy="82" r="6"/><circle cx="128" cy="82" r="6"/></g>'
+      + '<g stroke="url(#'+i+'g)" stroke-width="2.6" stroke-linecap="round"><path d="M72 88v34"/><path d="M128 88v34"/></g>'
+      + '<g fill="url(#'+i+'g)"><rect x="66" y="120" width="12" height="7" rx="2"/><rect x="122" y="120" width="12" height="7" rx="2"/></g>'
+      + '<circle cx="72" cy="144" r="15" fill="url(#'+i+'p)"/><circle cx="128" cy="144" r="15" fill="url(#'+i+'p)"/>';},
+    bangle:function(i){
+      return '<ellipse cx="100" cy="150" rx="62" ry="30" fill="none" stroke="url(#'+i+'g)" stroke-width="13"/>'
+      + '<ellipse cx="100" cy="150" rx="62" ry="30" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="2.5" transform="translate(0,-3)"/>'
+      + '<g fill="#fff"><path d="M154 92l1.5 5 5 1.5-5 1.5-1.5 5-1.5-5-5-1.5 5-1.5z"/></g>';},
+    layered:function(i){
+      return '<path d="M38 60 Q100 176 162 60" fill="none" stroke="url(#'+i+'g)" stroke-width="3" stroke-linecap="round" stroke-dasharray="5 2.5"/>'
+      + '<path d="M52 60 Q100 214 148 60" fill="none" stroke="url(#'+i+'g)" stroke-width="3" stroke-linecap="round"/>'
+      + '<path d="M100 178 l5.5 11 12 1.8-8.7 8.4 2 12-10.8-5.7-10.8 5.7 2-12-8.7-8.4 12-1.8z" fill="url(#'+i+'g)" transform="translate(0,-18) scale(1)" />';},
+    baguette:function(i,c){
+      return '<path d="M64 120 C64 46 136 46 136 120" fill="none" stroke="'+c+'" stroke-width="8" stroke-linecap="round"/>'
+      + '<rect x="36" y="112" width="128" height="80" rx="20" fill="'+c+'"/><rect x="36" y="112" width="128" height="80" rx="20" fill="url(#'+i+'h)"/>'
+      + '<path d="M36 128 Q36 112 58 112 H142 Q164 112 164 128 Q100 186 36 128 Z" fill="#000" opacity=".16"/>'
+      + '<path d="M48 176 H152" stroke="#fff" stroke-opacity=".4" stroke-dasharray="4 4" fill="none"/>'
+      + '<circle cx="100" cy="152" r="8" fill="url(#'+i+'g)"/>';},
+    tote:function(i,c){
+      return '<path d="M72 100 C72 44 128 44 128 100" fill="none" stroke="'+c+'" stroke-width="7" stroke-linecap="round"/>'
+      + '<path d="M44 98 H156 L170 206 H30 Z" fill="'+c+'" stroke="'+c+'" stroke-width="6" stroke-linejoin="round"/><path d="M44 98 H156 L170 206 H30 Z" fill="url(#'+i+'h)"/>'
+      + '<rect x="86" y="132" width="28" height="36" rx="3" fill="url(#'+i+'g)"/><text x="100" y="155" text-anchor="middle" font-family="Bodoni Moda,Didot,serif" font-size="15" fill="#fff" fill-opacity=".9">L</text>';},
+    belt:function(i,c){
+      return '<ellipse cx="100" cy="150" rx="66" ry="54" fill="none" stroke="'+c+'" stroke-width="15"/>'
+      + '<ellipse cx="100" cy="150" rx="66" ry="54" fill="none" stroke="#fff" stroke-opacity=".18" stroke-width="3" transform="translate(0,-4)"/>'
+      + '<rect x="80" y="72" width="40" height="32" rx="5" fill="none" stroke="url(#'+i+'g)" stroke-width="6"/><path d="M100 76 V100" stroke="url(#'+i+'g)" stroke-width="4" stroke-linecap="round"/>';},
+    beltThin:function(i,c){
+      return '<ellipse cx="100" cy="150" rx="66" ry="54" fill="none" stroke="'+c+'" stroke-width="7"/>'
+      + '<circle cx="100" cy="92" r="17" fill="none" stroke="url(#'+i+'g)" stroke-width="5"/><circle cx="100" cy="92" r="6" fill="url(#'+i+'g)"/>';},
+    cateye:function(i,c){
+      var L='M28 104 Q28 94 40 96 L88 106 Q98 108 95 120 Q90 146 62 146 Q32 146 28 114 Z';
+      return '<g stroke="'+c+'" stroke-width="6" stroke-linejoin="round"><path d="'+L+'" fill="url(#'+i+'l)"/><path d="'+L+'" fill="url(#'+i+'l)" transform="translate(200,0) scale(-1,1)"/></g>'
+      + '<path d="'+L+'" fill="url(#'+i+'h)" opacity=".5"/><path d="'+L+'" fill="url(#'+i+'h)" opacity=".5" transform="translate(200,0) scale(-1,1)"/>'
+      + '<path d="M95 112 Q100 106 105 112" fill="none" stroke="'+c+'" stroke-width="5" stroke-linecap="round"/>'
+      + '<path d="M28 100 L12 94 M172 100 L188 94" stroke="'+c+'" stroke-width="5" stroke-linecap="round"/><circle cx="30" cy="102" r="3.2" fill="url(#'+i+'g)"/><circle cx="170" cy="102" r="3.2" fill="url(#'+i+'g)"/>';},
+    round:function(i,c){
+      return '<g stroke="url(#'+i+'g)" stroke-width="4"><circle cx="64" cy="132" r="31" fill="url(#'+i+'l)"/><circle cx="136" cy="132" r="31" fill="url(#'+i+'l)"/></g>'
+      + '<path d="M94 126 Q100 116 106 126" fill="none" stroke="url(#'+i+'g)" stroke-width="4" stroke-linecap="round"/>'
+      + '<path d="M33 126 L14 116 M167 126 L186 116" stroke="url(#'+i+'g)" stroke-width="4" stroke-linecap="round"/>'
+      + '<circle cx="54" cy="122" r="5" fill="#fff" opacity=".3"/><circle cx="126" cy="122" r="5" fill="#fff" opacity=".3"/>';}
+  };
+  function art(p){
+    if (p.img){
+      var alt = String(p.name||'').replace(/"/g,'&quot;');
+      return '<img class="ph-bg" src="'+p.img+'" alt="" aria-hidden="true"><img class="ph'+(p.wide?' full':'')+'" src="'+p.img+'" alt="'+alt+'" loading="lazy">';
+    }
+    var i='a'+(++seq);
+    var inner = ART[p.art](i, p.c, p);
+    return '<svg viewBox="0 0 200 240" role="img" aria-label="'+(p.name||p.label||"")+'" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">'
+      + defs(i) + '<rect width="200" height="240" fill="'+p.tile+'"/>'
+      + '<ellipse cx="100" cy="213" rx="54" ry="6" fill="#000" opacity="'+(p.dark?'.35':'.12')+'"/>' + inner + '</svg>';
+  }
+
+  /* ---------- Catalogue (noms et prix à adapter) ---------- */
+  var T = {rose:'#F1D9E0', lilac:'#E6DAEC', sand:'#F0E0D2', peach:'#F5DCD0', plum:'#3A2142', aub:'#2E1B34', mauve:'#DCC6D2', taupe:'#E3D6D0', ivory:'#F3ECE8'};
+  var G = {rose:'#E7B3C4', amber:'#C98A4B', frost:'#F5EEEF', plum:'#7A3A5F', sage:'#C9D2C2', black:'#2B1B30', cream:'#EFE2D3', wine:'#6D2842', camel:'#B98458', ivory:'#F2EAE3'};
+  var SECTIONS = [
+    {id:'skincare', title:'Skin<em>care</em>', desc:'Nettoyer, traiter, hydrater, protéger. Une routine simple pour une peau lumineuse.', label:'Skincare', tile:T.lilac, art:'serum', c:G.rose,
+     items:[
+      {k:'sk-spf', n:'CeraVe · Fluide invisible SPF 50+', d:'Toucher sec · peaux normales à grasses · 50 ml', p:14000, t:'Solaire', img:'img/spf.jpg'},
+      {k:'sk-yeux', n:'La Rosée · Contour des yeux défatigant', d:'Aloe vera bio · 99 % d’origine naturelle', p:12500, t:'Soin des yeux', img:'img/yeux.jpg', badge:'Nouveau'},
+      {k:'sk-masque', n:'Masque à l’argile rose', d:'Éclat, hydratation, anti-âge · 120 g', p:8000, t:'Masques', img:'img/masque.jpg'},
+      {k:'sk-gel', n:'Pers Protect · Gel nettoyant', d:'Apaisant et antioxydant', p:9500, t:'Nettoyants', img:'img/gel.jpg'},
+      {k:'sk-creme', n:'Isntree · Crème gel acide hyaluronique', d:'Hydratation légère · 100 ml', p:15000, t:'Crèmes', img:'img/creme.jpg'},
+      {k:'sk-serum', n:'Garnier · Sérum nuit vitamine C', d:'Booster d’éclat · 10 % de vitamine C pure', p:18500, t:'Sérums', img:'img/serum.jpg', badge:'Best-seller', wide:true}
+     ]},
+    {id:'body', title:'<em>Body</em>', desc:'Laits de corps, gommages, huiles et parfums pour une peau douce et un sillage qui reste.', label:'Body', tile:T.rose, art:'perfumeRound', c:G.plum,
+     items:[
+      {n:'Lait de corps karité-vanille', d:'Hydratation intense · 250 ml', p:11000, t:'Lait de corps', art:'pump', c:G.cream, tile:T.sand, badge:'Best-seller'},
+      {n:'Gommage sucre et coco', d:'Peau satinée · 250 g', p:9500, t:'Gommages', art:'jar', c:G.ivory, tile:T.peach},
+      {n:'Huile sèche scintillante', d:'Éclat doré · 100 ml', p:13500, t:'Huiles', art:'serum', c:G.amber, tile:T.rose, sparkle:true},
+      {n:'Eau de parfum Nuit d’ambre', d:'Ambre, vanille, musc · 50 ml', p:38000, t:'Parfums', art:'perfume', c:G.wine, tile:T.mauve, badge:'Nouveau'},
+      {n:'Eau de parfum Fleur blanche', d:'Jasmin, tubéreuse · 50 ml', p:35000, t:'Parfums', art:'perfumeRound', c:G.rose, tile:T.lilac},
+      {n:'Brume parfumée corps et cheveux', d:'Pivoine, poire · 100 ml', p:8500, t:'Parfums', art:'mist', c:G.frost, tile:T.rose},
+      {n:'Gommage corps café et karité', d:'Tonifie · 250 g', p:9000, t:'Gommages', art:'jar', c:G.camel, tile:T.taupe},
+      {n:'Lait de corps éclat nacré', d:'Léger voile doré · 250 ml', p:12000, t:'Lait de corps', art:'pump', c:G.rose, tile:T.ivory}
+     ]},
+    {id:'jewelry', title:'<em>Jewelry</em>', desc:'Plaqué or, perles et lignes fines. Des bijoux à porter chaque jour, sans les enlever.', label:'Jewelry', tile:T.plum, dark:true, art:'ring',
+     items:[
+      {n:'Bague solitaire', d:'Plaqué or 18 carats', p:14000, t:'Bagues', art:'ring', tile:T.plum, dark:true, badge:'Best-seller'},
+      {n:'Collier perle', d:'Chaîne fine · 45 cm', p:17500, t:'Colliers', art:'necklace', tile:T.aub, dark:true},
+      {n:'Créoles dorées', d:'Plaqué or · 30 mm', p:9000, t:'Boucles', art:'hoops', tile:T.plum, dark:true},
+      {n:'Jonc doré', d:'Ouvert · ajustable', p:12500, t:'Bracelets', art:'bangle', tile:T.aub, dark:true, badge:'Nouveau'},
+      {n:'Boucles perle goutte', d:'Perle d’eau douce', p:11000, t:'Boucles', art:'drops', tile:T.plum, dark:true},
+      {n:'Collier double chaîne', d:'Étoile · plaqué or', p:16000, t:'Colliers', art:'layered', tile:T.aub, dark:true}
+     ]},
+    {id:'accessoires', title:'<em>Accessoires</em>', desc:'Sacs, ceintures et lunettes. Les pièces qui terminent une tenue.', label:'Accessoires', tile:T.taupe, art:'baguette', c:G.wine,
+     items:[
+      {n:'Sac baguette cuir', d:'Bandoulière · fermoir doré', p:45000, t:'Sacs', art:'baguette', c:G.wine, tile:T.taupe, badge:'Best-seller'},
+      {n:'Grand cabas', d:'Toile enduite · intérieur zippé', p:52000, t:'Sacs', art:'tote', c:G.camel, tile:T.ivory},
+      {n:'Ceinture cuir boucle dorée', d:'Largeur 3 cm', p:18000, t:'Ceintures', art:'belt', c:G.black, tile:T.sand},
+      {n:'Ceinture fine anneau', d:'Largeur 1,5 cm', p:14500, t:'Ceintures', art:'beltThin', c:G.wine, tile:T.mauve, badge:'Nouveau'},
+      {n:'Lunettes œil de chat', d:'Verres teintés · UV400', p:15000, t:'Lunettes', art:'cateye', c:G.black, tile:T.rose},
+      {n:'Lunettes rondes dorées', d:'Verres fumés · UV400', p:16500, t:'Lunettes', art:'round', tile:T.lilac}
+     ]}
+  ];
+  var ALL = [];
+  SECTIONS.forEach(function(s){ s.items.forEach(function(it,ix){
+    it.id = it.k || (s.id.slice(0,3)+ix); it.name = it.n; it.cat = s.label; ALL.push(it);
+  });});
+  function byId(id){ for (var k=0;k<ALL.length;k++) if (ALL[k].id===id) return ALL[k]; }
+  function fcfa(n){ return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g,' ') + ' FCFA'; }
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+
+  /* ---------- Rendu ---------- */
+  document.getElementById('heroArches').innerHTML = [
+    {art:'serum', c:G.rose, tile:T.lilac, name:'Sérum'},
+    {art:'perfumeRound', c:G.plum, tile:T.rose, name:'Parfum'},
+    {art:'ring', tile:T.plum, dark:true, name:'Bague'}
+  ].map(function(p){ return '<div class="arch">'+art(p)+'</div>'; }).join('');
+
+  document.getElementById('cats').innerHTML = SECTIONS.map(function(s){
+    var p = {art:s.art, c:s.c, tile:s.tile, dark:s.dark, name:s.label};
+    return '<a class="cat" href="#'+s.id+'" data-go="'+s.id+'"><div class="arch">'+art(p)+'</div><h3>'+s.label+'</h3><span>'+s.items.length+' produits</span></a>';
+  }).join('');
+
+  function card(p){
+    return '<article class="card" data-type="'+esc(p.t)+'"><div class="arch">'+art(p)+(p.badge?'<span class="badge">'+p.badge+'</span>':'')+'</div>'
+      + '<h3>'+esc(p.n)+'</h3><p class="desc">'+esc(p.d)+'</p>'
+      + '<div class="row"><span class="price">'+fcfa(p.p)+'</span><button class="add" data-add="'+p.id+'" aria-label="Ajouter '+esc(p.n)+' au panier">Ajouter</button></div></article>';
+  }
+  SECTIONS.forEach(function(s){
+    var types = []; s.items.forEach(function(p){ if (types.indexOf(p.t)<0) types.push(p.t); });
+    var el = document.getElementById(s.id);
+    el.innerHTML = '<div class="sec-head"><div><h2>'+s.title+'</h2><p>'+s.desc+'</p></div></div>'
+      + '<div class="chips" role="group" aria-label="Filtrer '+s.label+'"><button class="chip" aria-pressed="true" data-f="">Tout</button>'
+      + types.map(function(t){ return '<button class="chip" aria-pressed="false" data-f="'+esc(t)+'">'+esc(t)+'</button>'; }).join('')+'</div>'
+      + '<div class="grid">'+s.items.map(card).join('')+'</div>';
+    el.addEventListener('click', function(e){
+      var b = e.target.closest('.chip'); if (!b) return;
+      el.querySelectorAll('.chip').forEach(function(c){ c.setAttribute('aria-pressed', c===b ? 'true':'false'); });
+      var f = b.getAttribute('data-f');
+      el.querySelectorAll('.card').forEach(function(c){ c.hidden = !!f && c.getAttribute('data-type')!==f; });
+    });
+  });
+
+  /* ---------- Navigation douce ---------- */
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('[data-go]'); if (!a) return;
+    e.preventDefault();
+    var id = a.getAttribute('data-go');
+    var t = id==='top' ? document.getElementById('haut') : document.getElementById(id);
+    if (t) t.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+  document.getElementById('logo').addEventListener('click', function(e){ e.preventDefault(); window.scrollTo({top:0, behavior:'smooth'}); });
+
+  /* ---------- Panier ---------- */
+  var cart = {};
+  try { var saved = JSON.parse(localStorage.getItem('lessentiel-cart')||'{}'); Object.keys(saved).forEach(function(k){ if (byId(k) && saved[k]>0) cart[k]=saved[k]; }); } catch(e){}
+  function persist(){ try { localStorage.setItem('lessentiel-cart', JSON.stringify(cart)); } catch(e){} }
+  var drawer = document.getElementById('drawer'), veil = document.getElementById('veil');
+  function openCart(){ drawer.classList.add('on'); veil.classList.add('on'); drawer.setAttribute('aria-hidden','false'); }
+  function closeCart(){ drawer.classList.remove('on'); veil.classList.remove('on'); drawer.setAttribute('aria-hidden','true'); }
+  document.getElementById('openCart').addEventListener('click', openCart);
+  document.getElementById('closeCart').addEventListener('click', closeCart);
+  veil.addEventListener('click', closeCart);
+  document.addEventListener('keydown', function(e){ if (e.key==='Escape') closeCart(); });
+  var toastEl = document.getElementById('toast'), tt;
+  function toast(m){ toastEl.textContent = m; toastEl.classList.add('on'); clearTimeout(tt); tt = setTimeout(function(){ toastEl.classList.remove('on'); }, 1800); }
+
+  function totals(){ var n=0, s=0; Object.keys(cart).forEach(function(k){ var p=byId(k); n+=cart[k]; s+=cart[k]*p.p; }); return {n:n, s:s}; }
+  function orderText(){
+    var lines = ['Bonjour L’essentiel, je souhaite commander :'];
+    Object.keys(cart).forEach(function(k){ var p=byId(k); lines.push('• '+cart[k]+' × '+p.n+' — '+fcfa(cart[k]*p.p)); });
+    lines.push('Total : '+fcfa(totals().s));
+    var nm=document.getElementById('fName').value.trim(), tl=document.getElementById('fTel').value.trim(), ad=document.getElementById('fAddr').value.trim();
+    if (nm) lines.push('Nom : '+nm); if (tl) lines.push('Téléphone : '+tl); if (ad) lines.push('Livraison : '+ad);
+    return lines.join('\n');
+  }
+  function render(){
+    var t = totals(), keys = Object.keys(cart);
+    document.getElementById('count').textContent = t.n;
+    document.getElementById('total').textContent = fcfa(t.s);
+    var box = document.getElementById('items');
+    if (!keys.length){
+      box.innerHTML = '<div class="empty"><b>Votre panier est vide</b>Ajoutez un soin, un parfum ou un bijou pour commencer.</div>';
+    } else {
+      box.innerHTML = keys.map(function(k){ var p=byId(k);
+        return '<div class="it"><div class="arch">'+art(p)+'</div><div><h4>'+esc(p.n)+'</h4><div class="p">'+fcfa(p.p)+'</div>'
+        + '<div class="qty"><button data-q="'+k+'" data-d="-1" aria-label="Retirer un">−</button><span>'+cart[k]+'</span><button data-q="'+k+'" data-d="1" aria-label="Ajouter un">+</button></div></div>'
+        + '<button class="rm" data-rm="'+k+'">Retirer</button></div>';
+      }).join('');
+    }
+    document.getElementById('copyOrder').disabled = !keys.length;
+    document.getElementById('orderLbl').hidden = true;
+    persist();
+  }
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('[data-add]');
+    if (a){ var id=a.getAttribute('data-add'); cart[id]=(cart[id]||0)+1; render(); toast('Ajouté au panier'); return; }
+    var q = e.target.closest('[data-q]');
+    if (q){ var k=q.getAttribute('data-q'); cart[k]=(cart[k]||0)+parseInt(q.getAttribute('data-d'),10); if (cart[k]<=0) delete cart[k]; render(); return; }
+    var r = e.target.closest('[data-rm]');
+    if (r){ delete cart[r.getAttribute('data-rm')]; render(); }
+  });
+  document.getElementById('copyOrder').addEventListener('click', function(){
+    var txt = orderText(), note = document.getElementById('note'), ta = document.getElementById('orderText');
+    ta.value = txt;
+    function fallback(){
+      document.getElementById('orderLbl').hidden = false; ta.focus(); ta.select();
+      note.textContent = 'Sélectionnez le texte ci-dessus, copiez-le, puis envoyez-le nous en message.'; note.className='note';
+    }
+    function done(){
+      document.getElementById('orderLbl').hidden = false;
+      note.textContent = 'Commande copiée. Collez-la dans un message pour que nous confirmions le paiement et la livraison.'; note.className='note ok';
+    }
+    try { navigator.clipboard.writeText(txt).then(done, fallback); } catch(e){ fallback(); }
+  });
+  render();
+})();
+</script>
+
+</body></html>
